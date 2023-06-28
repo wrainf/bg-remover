@@ -3,11 +3,11 @@
 ## Installation
 1. Clone this repo
    
-## Background Remover Frontend
+## Frontend
 ### Start
 Simple static site just open index.html in your browser.
 
-## Background Remover Backend
+## Backend
 ### Initialisation
 1. CD into server/ : `cd server`
 2. Install dependencies: `pip install backgroundremover && pip install flask && pip install flask-cors`
