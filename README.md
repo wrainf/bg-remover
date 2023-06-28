@@ -1,4 +1,7 @@
-# Automatic Backgorun Remover
+# Automatic Background Remover
+Simple application that allows you to automatically remove the backgroun of an image. This is split into two components, client and server. Client handles getting custom images to upload. Backend receives images, feeds it to background remover, and sends back the result.
+
+Feel free to create a PR to add more features!
 
 ## Installation
 1. Clone this repo
