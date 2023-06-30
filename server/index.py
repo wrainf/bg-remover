@@ -38,4 +38,4 @@ def fetch_image(id):
     for file in folder:
         if file == f"ready_{id}":
             return send_file(id, mimetype='image/png')
-    return jsonify({}), 404
+    return {}, 404
