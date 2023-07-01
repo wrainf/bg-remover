@@ -1,22 +1,31 @@
-from flask import Flask, request, send_file
+from flask import Flask, request, send_file, after_this_request
 from flask_cors import CORS
 import subprocess
 from multiprocessing import Process
 import uuid
 import os
 
+prevImage = ''
+
 def process_image(img_input, output):
+    f = open(f"{output}", "w")
+    f.close()
     print('Processing image...')
     subprocess.run(['backgroundremover', '-i', img_input, '-o', output])
+    removeFile(img_input)
     print('Image Created')
-    f = open(f"ready_{output}", "w")
-    f.close()
+
+def removeFile(file):
+    if os.path.exists(file):
+        os.remove(file)
+    
 
 app = Flask(__name__)
-CORS(app, origins=['https://wrainf.github.io/bg-remover-frontend/'])
+CORS(app)
 @app.route("/upload", methods=['POST'])
 def upload_image():
     print(request.files)
+    removeFile(prevImage)
     filename = f"{uuid.uuid4()}.png"
     if 'file' in request.files:
         image = request.files['file']
@@ -35,7 +44,9 @@ def upload_image():
 @app.route("/fetch/<id>", methods=['GET'])
 def fetch_image(id):
     folder = os.listdir()
+
     for file in folder:
-        if file == f"ready_{id}":
-            return send_file(id, mimetype='image/png')
+        if file == f"ready_{id}.png":
+            prevImage = f"ready_{id}.png"
+            return send_file(file, mimetype='image/png')
     return {}, 404
