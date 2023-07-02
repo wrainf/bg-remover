@@ -29,8 +29,6 @@ async function getImage(){
       loader.className = 'hidden'
     }
     
-  } else {
-    alert("Image processing failed")
   }
   
 }

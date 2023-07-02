@@ -1,4 +1,0 @@
-backgroundremover==0.2.3
-Flask==2.3.2
-Flask-CORS
-gunicorn
