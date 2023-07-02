@@ -13,7 +13,7 @@ Simple static site just open index.html in your browser.
 ## Backend
 ### Initialisation
 1. CD into server/ : `cd server`
-2. Install dependencies: `pip install backgroundremover && pip install flask && pip install flask-cors`
+2. Install dependencies: `pip install -r requirements.txt`
 3. Setup backgroundremover: `backgroundremover -i 'image.png' -o 'output.png'`
 ### Start
 1. Run: `flask --app index run`
