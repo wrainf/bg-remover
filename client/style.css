@@ -79,4 +79,5 @@ input[type="submit"] {
 img {
   width: 100%;
   border: 2px solid #696969;
+  cursor: pointer;
 }

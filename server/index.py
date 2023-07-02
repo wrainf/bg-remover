@@ -46,7 +46,8 @@ def fetch_image(id):
     folder = os.listdir()
 
     for file in folder:
-        if file == f"ready_{id}.png":
+        if file == f"ready_{id}.png" and os.path.getsize(file) > 0:
             prevImage = f"ready_{id}.png"
             return send_file(file, mimetype='image/png')
+            
     return {}, 404
