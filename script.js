@@ -1,6 +1,7 @@
 const form = document.getElementById("imageForm")
 const resultContainer = document.getElementById('result')
 const loader = document.getElementById('loading')
+const baseURL = "https://auto-bg-remover.onrender.com"
 let imageID;
 let imageURL;
 let interval;
@@ -8,14 +9,14 @@ form.addEventListener('submit', async function(event) {
   event.preventDefault()
   loader.className = 'loading-container'
   const formData = new FormData(form)
-  const res = await fetch('http://localhost:5000/upload', {method: 'POST', body: formData})
+  const res = await fetch(`${baseURL}/upload`, {method: 'POST', body: formData})
   const json = await res.json()
   imageID = json.id
   interval = setInterval(getImage, 5000);
 })
 
 async function getImage(){
-  const res = await fetch(`http://localhost:5000/fetch/${imageID}`);
+  const res = await fetch(`${baseURL}/fetch/${imageID}`);
   if(res.ok){
     const blob = await res.blob()
     if(blob.size > 0) {
